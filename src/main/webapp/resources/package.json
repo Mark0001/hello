@@ -1,0 +1,23 @@
+{
+  "name": "resources",
+  "version": "1.0.0",
+  "description": "resouces for page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mark0001/hello.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mark0001/hello/issues"
+  },
+  "homepage": "https://github.com/Mark0001/hello#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1"
+  }
+}

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+body .container {
+	padding-top: 70px;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.mainBlock{
+	overflow: auto;
+}
+
+#map {
+	margin-top: 70px;
+	height: calc(100% - 70px);
+}
