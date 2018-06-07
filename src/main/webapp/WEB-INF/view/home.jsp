@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script async defer
+<script defer
       src="https://maps.googleapis.com/maps/api/js?key=${googleMapApiKey}&callback=initMap">
     </script>
 <script type="text/javascript">
