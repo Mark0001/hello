@@ -1,7 +1,5 @@
 package hello.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +15,25 @@ import hello.dto.UbikeInfoDTO;
 @RequestMapping("/ubike")
 public class UBikeInfoController {
 
-	@Autowired
-	CacheFactory cacheFactory;
+    @Autowired
+    CacheFactory cacheFactory;
 
-	@RequestMapping("/info")
-	@ResponseBody
-	public AjaxDTO<List<UbikeInfoDTO>> toMain() {
-	    AjaxDTO<List<UbikeInfoDTO>> dto = new AjaxDTO<List<UbikeInfoDTO>>();
-	    List<UbikeInfoDTO> data =  cacheFactory.getFromCache();
-	    dto.setData(data);
-	    return dto;
-		
-	}
+    @RequestMapping("/info")
+    @ResponseBody
+    public AjaxDTO<List<UbikeInfoDTO>> toMain() {
+        AjaxDTO<List<UbikeInfoDTO>> dto = new AjaxDTO<List<UbikeInfoDTO>>();
+        try {
+            dto.setStatus(true);
+            dto.setMessage("查詢成功");
+            List<UbikeInfoDTO> data = cacheFactory.getFromCache();
+            dto.setData(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+            dto.setStatus(false);
+            dto.setMessage("查詢失敗");
+        }
+        return dto;
+
+    }
 
 }
