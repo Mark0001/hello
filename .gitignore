@@ -1,0 +1,12 @@
+# Compiled class file
+*.class
+
+
+/.settings/*
+.classpath
+.project
+
+/target/*
+googleMapApiKey.properties
+/target/
+/bin/
