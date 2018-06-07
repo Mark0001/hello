@@ -17,12 +17,12 @@
     If there are more than 10000 elements it will overflow to the
     disk cache, which in this configuration will go to wherever java.io.tmp is
     defined on your system. On a standard Linux system this will be /tmp" -->
-	<cache name="cache1" 
+	<cache name="cache30Sec" 
 		maxEntriesLocalHeap="10000"
 		maxEntriesLocalDisk="1000" 
 		eternal="false" 
 		diskSpoolBufferSizeMB="20"
-		timeToIdleSeconds="10" timeToLiveSeconds="10"
+		timeToIdleSeconds="30" timeToLiveSeconds="30"
 		memoryStoreEvictionPolicy="LFU" 
 		transactionalMode="off">
 		<persistence strategy="localTempSwap" />

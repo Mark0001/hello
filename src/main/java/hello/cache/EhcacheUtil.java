@@ -10,7 +10,7 @@ import net.sf.ehcache.Element;
 public class EhcacheUtil {
 
     public enum CacheGroup {
-        cache1
+        cache30Sec
     }
 
     private CacheManager cacheManager;
@@ -30,4 +30,5 @@ public class EhcacheUtil {
         Element element = cache.get(cahceKey);
         return element == null ? null : (T) element.getObjectValue();
     }
+
 }

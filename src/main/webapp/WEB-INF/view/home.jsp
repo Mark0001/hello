@@ -10,10 +10,15 @@
 <script type="text/javascript">
 var map;
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 25.047045, lng: 121.516547},
-    zoom: 17
-  });
+	var position = {lat: 25.047045, lng: 121.516547};
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: position,
+		zoom: 17
+ 	});
+	var marker = new google.maps.Marker({
+    	position: position,
+    	map: map
+    });
 }
 </script>
 </head>
