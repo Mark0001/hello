@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hello.cache.CacheFactory;
+import hello.cache.UbikeStationCacheFactory;
 import hello.dto.AjaxDTO;
 import hello.dto.UbikeInfoDTO;
 
@@ -16,7 +16,7 @@ import hello.dto.UbikeInfoDTO;
 public class UBikeInfoController {
 
     @Autowired
-    CacheFactory cacheFactory;
+    UbikeStationCacheFactory cacheFactory;
 
     @RequestMapping("/info")
     @ResponseBody

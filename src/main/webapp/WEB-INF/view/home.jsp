@@ -26,7 +26,7 @@
 			});
 
 			for (var i = 0; i < markerData.length; i++) {
-				var mposition =  {lat: markerData[i].lat , lng: markerData[i].lng}
+				var mposition =  {lat: markerData[i].positionLat , lng: markerData[i].positionLon}
 				var marker = new google.maps.Marker({
 					position: mposition,
 					map: map

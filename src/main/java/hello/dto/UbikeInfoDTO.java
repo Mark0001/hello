@@ -2,202 +2,122 @@ package hello.dto;
 
 public class UbikeInfoDTO {
 
-    private String id;
-    private String iid;
-    private String sv;
-    private String sd;
-    private String vtyp;
-    private String sno;
-    private String sna;
-    private String sip;
-    private String tot;
-    private String sbi;
-    private String sarea;
-    private String mday;
-    private Double lat;
-    private Double lng;
-    private String ar;
-    private String sareaen;
-    private String snaen;
-    private String aren;
-    private String nbcnt;
-    private String bemp;
-    private String act;
+    private String stationUID;
+    private String stationID;
+    private String authorityID;
+    private String stationName_Zh_tw;
+    private String stationName_En;
+    private Double positionLat;
+    private Double positionLon;
+    private String stationAddress_Zh_tw;
+    private String stationAddress_En;
+    private Integer bikesCapacity;
+    private String srcUpdateTime;
+    private String updateTime;
 
-    public String getId() {
-        return id;
+    public String getStationUID() {
+        return stationUID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setStationUID(String stationUID) {
+        this.stationUID = stationUID;
     }
 
-    public String getIid() {
-        return iid;
+    public String getStationID() {
+        return stationID;
     }
 
-    public void setIid(String iid) {
-        this.iid = iid;
+    public void setStationID(String stationID) {
+        this.stationID = stationID;
     }
 
-    public String getSv() {
-        return sv;
+    public String getAuthorityID() {
+        return authorityID;
     }
 
-    public void setSv(String sv) {
-        this.sv = sv;
+    public void setAuthorityID(String authorityID) {
+        this.authorityID = authorityID;
     }
 
-    public String getSd() {
-        return sd;
+    public String getStationName_Zh_tw() {
+        return stationName_Zh_tw;
     }
 
-    public void setSd(String sd) {
-        this.sd = sd;
+    public void setStationName_Zh_tw(String stationName_Zh_tw) {
+        this.stationName_Zh_tw = stationName_Zh_tw;
     }
 
-    public String getVtyp() {
-        return vtyp;
+    public String getStationName_En() {
+        return stationName_En;
     }
 
-    public void setVtyp(String vtyp) {
-        this.vtyp = vtyp;
+    public void setStationName_En(String stationName_En) {
+        this.stationName_En = stationName_En;
     }
 
-    public String getSno() {
-        return sno;
+    public Double getPositionLat() {
+        return positionLat;
     }
 
-    public void setSno(String sno) {
-        this.sno = sno;
+    public void setPositionLat(Double positionLat) {
+        this.positionLat = positionLat;
     }
 
-    public String getSna() {
-        return sna;
+    public Double getPositionLon() {
+        return positionLon;
     }
 
-    public void setSna(String sna) {
-        this.sna = sna;
+    public void setPositionLon(Double positionLon) {
+        this.positionLon = positionLon;
     }
 
-    public String getSip() {
-        return sip;
+    public String getStationAddress_Zh_tw() {
+        return stationAddress_Zh_tw;
     }
 
-    public void setSip(String sip) {
-        this.sip = sip;
+    public void setStationAddress_Zh_tw(String stationAddress_Zh_tw) {
+        this.stationAddress_Zh_tw = stationAddress_Zh_tw;
     }
 
-    public String getTot() {
-        return tot;
+    public String getStationAddress_En() {
+        return stationAddress_En;
     }
 
-    public void setTot(String tot) {
-        this.tot = tot;
+    public void setStationAddress_En(String stationAddress_En) {
+        this.stationAddress_En = stationAddress_En;
     }
 
-    public String getSbi() {
-        return sbi;
+    public Integer getBikesCapacity() {
+        return bikesCapacity;
     }
 
-    public void setSbi(String sbi) {
-        this.sbi = sbi;
+    public void setBikesCapacity(Integer bikesCapacity) {
+        this.bikesCapacity = bikesCapacity;
     }
 
-    public String getSarea() {
-        return sarea;
+    public String getSrcUpdateTime() {
+        return srcUpdateTime;
     }
 
-    public void setSarea(String sarea) {
-        this.sarea = sarea;
+    public void setSrcUpdateTime(String srcUpdateTime) {
+        this.srcUpdateTime = srcUpdateTime;
     }
 
-    public String getMday() {
-        return mday;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setMday(String mday) {
-        this.mday = mday;
-    }
-
-    public Double getLat() {
-        return lat;
-    }
-
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
-
-    public Double getLng() {
-        return lng;
-    }
-
-    public void setLng(Double lng) {
-        this.lng = lng;
-    }
-
-    public String getAr() {
-        return ar;
-    }
-
-    public void setAr(String ar) {
-        this.ar = ar;
-    }
-
-    public String getSareaen() {
-        return sareaen;
-    }
-
-    public void setSareaen(String sareaen) {
-        this.sareaen = sareaen;
-    }
-
-    public String getSnaen() {
-        return snaen;
-    }
-
-    public void setSnaen(String snaen) {
-        this.snaen = snaen;
-    }
-
-    public String getAren() {
-        return aren;
-    }
-
-    public void setAren(String aren) {
-        this.aren = aren;
-    }
-
-    public String getNbcnt() {
-        return nbcnt;
-    }
-
-    public void setNbcnt(String nbcnt) {
-        this.nbcnt = nbcnt;
-    }
-
-    public String getBemp() {
-        return bemp;
-    }
-
-    public void setBemp(String bemp) {
-        this.bemp = bemp;
-    }
-
-    public String getAct() {
-        return act;
-    }
-
-    public void setAct(String act) {
-        this.act = act;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
     @Override
     public String toString() {
-        return "UbikeInfoDTO [id=" + id + ", iid=" + iid + ", sv=" + sv + ", sd=" + sd + ", vtyp=" + vtyp + ", sno=" + sno
-                + ", sna=" + sna + ", sip=" + sip + ", tot=" + tot + ", sbi=" + sbi + ", sarea=" + sarea + ", mday=" + mday
-                + ", lat=" + lat + ", lng=" + lng + ", ar=" + ar + ", sareaen=" + sareaen + ", snaen=" + snaen + ", aren=" + aren
-                + ", nbcnt=" + nbcnt + ", bemp=" + bemp + ", act=" + act + "]";
+        return "UbikeInfoDTO [stationUID=" + stationUID + ", stationID=" + stationID + ", authorityID=" + authorityID
+                + ", stationName_Zh_tw=" + stationName_Zh_tw + ", stationName_En=" + stationName_En + ", positionLat="
+                + positionLat + ", positionLon=" + positionLon + ", stationAddress_Zh_tw=" + stationAddress_Zh_tw
+                + ", stationAddress_En=" + stationAddress_En + ", bikesCapacity=" + bikesCapacity + ", srcUpdateTime="
+                + srcUpdateTime + ", updateTime=" + updateTime + "]";
     }
 
 }

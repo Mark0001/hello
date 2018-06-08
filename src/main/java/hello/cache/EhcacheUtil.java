@@ -10,7 +10,7 @@ import net.sf.ehcache.Element;
 public class EhcacheUtil {
 
     public enum CacheGroup {
-        cache30Sec
+        cache120Sec
     }
 
     private CacheManager cacheManager;
