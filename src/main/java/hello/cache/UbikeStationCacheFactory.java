@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import hello.dto.UbikeInfoDTO;
+import hello.dto.UbikeStationInfoDTO;
 
 @Component
 public class UbikeStationCacheFactory {
@@ -31,45 +31,45 @@ public class UbikeStationCacheFactory {
             return t;
         } else {
             System.out.println("not get From cache");
-            List<UbikeInfoDTO> value = this.getAllStationInfo();
+            List<UbikeStationInfoDTO> value = this.getAllStationInfo();
             cacheUtil.addElement(EhcacheUtil.CacheGroup.cache120Sec, "stationData", value);
             return (T) value;
         }
     }
 
-    private List<UbikeInfoDTO> getAllStationInfo() {
+    private List<UbikeStationInfoDTO> getAllStationInfo() {
 
-        List<UbikeInfoDTO> dataAll = new ArrayList<UbikeInfoDTO>();
+        List<UbikeStationInfoDTO> dataAll = new ArrayList<UbikeStationInfoDTO>();
         // Taipei
-        List<UbikeInfoDTO> dataTaipei = cityStationData("Taipei");
+        List<UbikeStationInfoDTO> dataTaipei = cityStationData("Taipei");
         dataAll.addAll(dataTaipei);
         // NewTaipei
-        List<UbikeInfoDTO> dataNewTaipei = cityStationData("NewTaipei");
+        List<UbikeStationInfoDTO> dataNewTaipei = cityStationData("NewTaipei");
         dataAll.addAll(dataNewTaipei);
 
         // Taoyuan
-        List<UbikeInfoDTO> dataTaoyuan = cityStationData("Taoyuan");
+        List<UbikeStationInfoDTO> dataTaoyuan = cityStationData("Taoyuan");
         dataAll.addAll(dataTaoyuan);
         // Taichung
-        List<UbikeInfoDTO> dataTaichung = cityStationData("Taichung");
+        List<UbikeStationInfoDTO> dataTaichung = cityStationData("Taichung");
         dataAll.addAll(dataTaichung);
         // Tainan
-        List<UbikeInfoDTO> dataTainan = cityStationData("Tainan");
+        List<UbikeStationInfoDTO> dataTainan = cityStationData("Tainan");
         dataAll.addAll(dataTainan);
         // Kaohsiung
-        List<UbikeInfoDTO> dataKaohsiung = cityStationData("Kaohsiung");
+        List<UbikeStationInfoDTO> dataKaohsiung = cityStationData("Kaohsiung");
         dataAll.addAll(dataKaohsiung);
         // ChanghuaCounty
-        List<UbikeInfoDTO> dataChanghuaCounty = cityStationData("ChanghuaCounty");
+        List<UbikeStationInfoDTO> dataChanghuaCounty = cityStationData("ChanghuaCounty");
         dataAll.addAll(dataChanghuaCounty);
         // PingtungCounty
-        List<UbikeInfoDTO> dataPingtungCounty = cityStationData("PingtungCounty");
+        List<UbikeStationInfoDTO> dataPingtungCounty = cityStationData("PingtungCounty");
         dataAll.addAll(dataPingtungCounty);
 
         return dataAll;
     }
 
-    private List<UbikeInfoDTO> cityStationData(String city) {
+    private List<UbikeStationInfoDTO> cityStationData(String city) {
         JSONArray jsonArray = null;
         try {
             jsonArray = readJsonFromUrl("http://ptx.transportdata.tw/MOTC/v2/Bike/Station/" + city + "?$format=JSON");
@@ -79,11 +79,12 @@ public class UbikeStationCacheFactory {
             e.printStackTrace();
         }
 
-        List<UbikeInfoDTO> data = new ArrayList<UbikeInfoDTO>();
+        List<UbikeStationInfoDTO> data = new ArrayList<UbikeStationInfoDTO>();
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            UbikeInfoDTO e = new UbikeInfoDTO();
+            UbikeStationInfoDTO e = new UbikeStationInfoDTO();
             JSONObject o = jsonArray.optJSONObject(i);
+            e.setCity(city);
             e.setStationUID(o.has("StationUID") ? o.getString("StationUID") : "");
             e.setStationID(o.has("StationID") ? o.getString("StationID") : "");
             e.setAuthorityID(o.has("AuthorityID") ? o.getString("AuthorityID") : "");

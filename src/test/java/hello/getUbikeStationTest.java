@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import hello.cache.UbikeStationCacheFactory;
-import hello.dto.UbikeInfoDTO;
+import hello.dto.UbikeStationInfoDTO;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,8 +22,8 @@ public class getUbikeStationTest {
     
     @Test
     public void test() {
-        List<UbikeInfoDTO> datas = this.cacheFactory.getFromCache();
-        for(UbikeInfoDTO dto : datas) {
+        List<UbikeStationInfoDTO> datas = this.cacheFactory.getFromCache();
+        for(UbikeStationInfoDTO dto : datas) {
             System.out.println(dto.toString());
         }
     }

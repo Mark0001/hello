@@ -15,7 +15,7 @@
 
 		var markerData;
 		var markers = [];
-		getUbikeInfo().then(function(res) {
+		getUbikeStation().then(function(res) {
 			markerData = res.data;
 			console.log(res);
 			var position = {
@@ -36,11 +36,14 @@
 				var marker = new google.maps.Marker({
 					position : mposition,
 					map : map,
-					name : markerData[i].stationName_Zh_tw
+					name : markerData[i].stationName_Zh_tw,
+					stationData : markerData[i]
 				});
 				
 				marker.addListener('click', function() {
-					alert(this.name);
+					// alert(this.name);
+					// alert(this.stationData.city + "_" + this.stationData.stationUID);
+					getStationService(this.stationData.city,this.stationData.stationUID);
 					map.setCenter(this.getPosition());
 			    });
 				markers.push(marker);
@@ -56,24 +59,34 @@
 						imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
 			});
 		});
-
-		
-
 	}
 
-	function getUbikeInfo() {
+	function getUbikeStation() {
 		return new Promise(function(resolve, reject){
 			var data = localStorage.getItem("ubikeStation");
 			if(data != null){
 				resolve(JSON.parse(data));
 			}else{
-				var url = "/hello/ubike/info";
+				var url = "/hello/ubike/stationInfo";
 				$.ajax(url).done(function(res){
 					localStorage.setItem("ubikeStation",JSON.stringify(res));
 	            	resolve(res);
 	        	})
 			}
 	    });
+	}
+
+	function getStationService(city,stationId){
+		var url = "/hello/ubike/serviceInfo";
+		$.ajax({
+			url : url,
+			data : {
+				city : city,
+				stationId :　stationId
+			}
+		}).done(function(res){
+			console.log(res);
+		});
 	}
 </script>
 </head>
