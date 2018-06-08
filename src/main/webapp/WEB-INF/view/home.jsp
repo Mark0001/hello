@@ -36,14 +36,27 @@
 				var marker = new google.maps.Marker({
 					position : mposition,
 					map : map,
-					name : markerData[i].stationName_Zh_tw,
+					title: markerData[i].stationName_Zh_tw,
 					stationData : markerData[i]
 				});
 				
-				marker.addListener('click', function() {
+				marker.addListener('click', function(event) {
 					// alert(this.name);
 					// alert(this.stationData.city + "_" + this.stationData.stationUID);
-					getStationService(this.stationData.city,this.stationData.stationUID);
+					var stationData = this.stationData;
+					getStationService(stationData.city,stationData.stationUID).done(function(res){
+						console.log(res);
+ 						var contentString  = "";
+ 						contentString += "站點名稱：" + stationData.stationName_Zh_tw + "<br>";
+ 						contentString += "剩餘車位：" + res.data.availableRentBikes + "<br>";
+ 						contentString += "可還車位：" + res.data.availableReturnBikes  + "<br>";
+
+						var infowindow = new google.maps.InfoWindow({
+          					content: contentString
+        				});
+        				infowindow.setPosition(event.latLng);
+  						infowindow.open(map);
+					});
 					map.setCenter(this.getPosition());
 			    });
 				markers.push(marker);
@@ -78,15 +91,13 @@
 
 	function getStationService(city,stationId){
 		var url = "/hello/ubike/serviceInfo";
-		$.ajax({
+		return $.ajax({
 			url : url,
 			data : {
 				city : city,
 				stationId :　stationId
 			}
-		}).done(function(res){
-			console.log(res);
-		});
+		})
 	}
 </script>
 </head>
