@@ -12,7 +12,6 @@
 <script type="text/javascript">
 	var map;
 	function initMap() {
-
 		var markerData;
 		var markers = [];
 		getUbikeStation().then(function(res) {
@@ -61,10 +60,6 @@
 			    });
 				markers.push(marker);
 			}
-			// var marker = new google.maps.Marker({
-			//    	position: position,
-			//    	map: map
-			//    });
 			var markerCluster = new MarkerClusterer(
 					map,
 					markers,
