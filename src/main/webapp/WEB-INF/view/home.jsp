@@ -15,7 +15,7 @@
 
 		var markerData;
 		var markers = [];
-		getUbikeInfo().done(function(res) {
+		getUbikeInfo().then(function(res) {
 			markerData = res.data;
 			console.log(res);
 			var position = {
@@ -41,6 +41,7 @@
 				
 				marker.addListener('click', function() {
 					alert(this.name);
+					map.setCenter(this.getPosition());
 			    });
 				markers.push(marker);
 			}
@@ -61,9 +62,18 @@
 	}
 
 	function getUbikeInfo() {
-		var url = "/hello/ubike/info";
-
-		return $.ajax(url);
+		return new Promise(function(resolve, reject){
+			var data = localStorage.getItem("ubikeStation");
+			if(data != null){
+				resolve(JSON.parse(data));
+			}else{
+				var url = "/hello/ubike/info";
+				$.ajax(url).done(function(res){
+					localStorage.setItem("ubikeStation",JSON.stringify(res));
+	            	resolve(res);
+	        	})
+			}
+	    });
 	}
 </script>
 </head>
