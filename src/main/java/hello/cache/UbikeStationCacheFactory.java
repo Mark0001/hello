@@ -84,18 +84,25 @@ public class UbikeStationCacheFactory {
         for (int i = 0; i < jsonArray.length(); i++) {
             UbikeInfoDTO e = new UbikeInfoDTO();
             JSONObject o = jsonArray.optJSONObject(i);
-            e.setStationUID(o.getString("StationUID"));
-            e.setStationID(o.getString("StationID"));
-            e.setAuthorityID(o.getString("AuthorityID"));
-            e.setStationName_Zh_tw(o.getJSONObject("StationName").getString("Zh_tw"));
-//            e.setStationName_En(o.getJSONObject("StationName").getString("En"));
-            e.setPositionLat(o.getJSONObject("StationPosition").getDouble("PositionLat"));
-            e.setPositionLon(o.getJSONObject("StationPosition").getDouble("PositionLon"));
-            e.setStationAddress_Zh_tw(o.getJSONObject("StationAddress").getString("Zh_tw"));
-//            e.setStationAddress_En(o.getJSONObject("StationAddress").getString("En"));
-            e.setBikesCapacity(o.getInt("BikesCapacity"));
-//            e.setSrcUpdateTime(o.getString("SrcUpdateTime"));
-            e.setUpdateTime(o.getString("UpdateTime"));
+            e.setStationUID(o.has("StationUID") ? o.getString("StationUID") : "");
+            e.setStationID(o.has("StationID") ? o.getString("StationID") : "");
+            e.setAuthorityID(o.has("AuthorityID") ? o.getString("AuthorityID") : "");
+            e.setStationName_Zh_tw(
+                    o.getJSONObject("StationName").has("Zh_tw") ? o.getJSONObject("StationName").getString("Zh_tw") : "");
+            e.setStationName_En(o.getJSONObject("StationName").has("En") ? o.getJSONObject("StationName").getString("En") : "");
+            e.setPositionLat(o.getJSONObject("StationPosition").has("PositionLat")
+                    ? o.getJSONObject("StationPosition").getDouble("PositionLat")
+                    : 0);
+            e.setPositionLon(o.getJSONObject("StationPosition").has("PositionLon")
+                    ? o.getJSONObject("StationPosition").getDouble("PositionLon")
+                    : 0);
+            e.setStationAddress_Zh_tw(
+                    o.getJSONObject("StationAddress").has("Zh_tw") ? o.getJSONObject("StationAddress").getString("Zh_tw") : "");
+            e.setStationAddress_En(
+                    o.getJSONObject("StationAddress").has("En") ? o.getJSONObject("StationAddress").getString("En") : "");
+            e.setBikesCapacity(o.has("BikesCapacity") ? o.getInt("BikesCapacity") : 0);
+            e.setSrcUpdateTime(o.has("SrcUpdateTime") ? o.getString("SrcUpdateTime") : "");
+            e.setUpdateTime(o.has("UpdateTime") ? o.getString("UpdateTime") : "");
             data.add(e);
         }
         return data;
