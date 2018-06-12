@@ -17,15 +17,13 @@
 		getUbikeStation().then(function(res) {
 			markerData = res.data;
 			console.log(res);
-			var position = {
-				lat : 25.047045,
-				lng : 121.516547
-			};
+			var position = yourPosition();
 			map = new google.maps.Map(document.getElementById('map'), {
 				center : position,
 				zoom : 17
 			});
 
+			whatchYourPosition();
 			for (var i = 0; i < markerData.length; i++) {
 				var mposition = {
 					lat : markerData[i].positionLat,
@@ -56,6 +54,7 @@
         				infowindow.setPosition(event.latLng);
   						infowindow.open(map);
 					});
+					console.log(this.getPosition());
 					map.setCenter(this.getPosition());
 			    });
 				markers.push(marker);
@@ -65,7 +64,8 @@
 					markers,
 					{
 						imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-			});
+					}
+			);
 		});
 	}
 
@@ -90,9 +90,58 @@
 			url : url,
 			data : {
 				city : city,
-				stationId :　stationId
+				stationId : stationId
 			}
 		})
+	}
+
+	function yourPosition(){
+		checkGeolocation(function(){
+			navigator.geolocation.getCurrentPosition(function(position){
+        		var pos = {
+        			lat: position.coords.latitude,
+        			lng: position.coords.longitude
+        		}
+        		return pos;
+        	});
+		});
+	}
+
+	var watchPosition;
+	function whatchYourPosition(){
+		checkGeolocation(function(){
+        	watchPosition = navigator.geolocation.watchPosition(function(position){
+        		var pos = {
+        			lat: position.coords.latitude,
+        			lng: position.coords.longitude
+        		}
+        		yourPositionMarker(pos);
+        	});
+	    });
+	}
+
+
+	var yourMarker;
+	function yourPositionMarker(position){
+		if(!yourMarker){
+			yourMarker = new google.maps.Marker({
+				position : position,
+				map : map,
+				title: "你的位置",
+				icon : "http://ruralshores.com/assets/marker-icon.png"
+			});
+		} else {
+			yourMarker.setPosition(position);
+		}
+		map.setCenter(position);
+	}
+
+	function checkGeolocation(callback){
+		if (navigator.geolocation) {
+        	callback();
+	    } else { 
+	        alert("你的瀏覽器不支援地理位置api")
+	    }
 	}
 </script>
 </head>

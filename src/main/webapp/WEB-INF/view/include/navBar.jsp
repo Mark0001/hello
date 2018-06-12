@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <div class="container-fliud">
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-		<a class="navbar-brand" href="/hello/">首頁</a>
+		<a class="navbar-brand" href="#">你的位置</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"

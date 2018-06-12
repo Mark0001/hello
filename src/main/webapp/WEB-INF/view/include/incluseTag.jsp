@@ -13,4 +13,4 @@
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/customCss/custom.css" />">
-<title>首頁</title>
+<title>Ubike站位、租借情況資訊</title>
