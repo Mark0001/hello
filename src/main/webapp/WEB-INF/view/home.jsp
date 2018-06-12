@@ -11,6 +11,7 @@
 </script>
 <script type="text/javascript">
 	var map;
+	var userPosition;
 	function initMap() {
 		var markerData;
 		var markers = [];
@@ -102,6 +103,8 @@
         			lat: position.coords.latitude,
         			lng: position.coords.longitude
         		}
+        		userPosition = pos;
+        		console.log(pos);
         		return pos;
         	});
 		});
@@ -115,6 +118,8 @@
         			lat: position.coords.latitude,
         			lng: position.coords.longitude
         		}
+        		userPosition = pos;
+        		console.log("移動了");
         		yourPositionMarker(pos);
         	});
 	    });
@@ -134,6 +139,10 @@
 			yourMarker.setPosition(position);
 		}
 		map.setCenter(position);
+	}
+
+	function setCenter(){		
+    	map.setCenter(new google.maps.LatLng(userPosition.lat, userPosition.lng));
 	}
 
 	function checkGeolocation(callback){
