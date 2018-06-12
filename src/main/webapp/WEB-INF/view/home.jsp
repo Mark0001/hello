@@ -39,6 +39,7 @@
 				});
 				
 				marker.addListener('click', function(event) {
+					var thisMarker = this;
 					// alert(this.name);
 					// alert(this.stationData.city + "_" + this.stationData.stationUID);
 					var stationData = this.stationData;
@@ -48,14 +49,14 @@
  						contentString += "站點名稱：" + stationData.stationName_Zh_tw + "<br>";
  						contentString += "剩餘車位：" + res.data.availableRentBikes + "<br>";
  						contentString += "可還車位：" + res.data.availableReturnBikes  + "<br>";
+ 						contentString += "資料來源更新時間：" + res.data.srcUpdateTime  + "<br>";
 
 						var infowindow = new google.maps.InfoWindow({
           					content: contentString
         				});
-        				infowindow.setPosition(event.latLng);
-  						infowindow.open(map);
+  						infowindow.open(map,thisMarker);
 					});
-					console.log(this.getPosition());
+// 					console.log(this.getPosition());
 					map.setCenter(this.getPosition());
 			    });
 				markers.push(marker);
