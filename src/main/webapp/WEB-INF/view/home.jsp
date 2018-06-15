@@ -7,7 +7,7 @@
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
 </script>
 <script defer
-	src="https://maps.googleapis.com/maps/api/js?key=${googleMapApiKey}&callback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=${googleMapApiKey}&libraries=places&callback=initMap">
 </script>
 <script type="text/javascript">
 	var map;
@@ -47,8 +47,8 @@
 						console.log(res);
  						var contentString  = "";
  						contentString += "站點名稱：" + stationData.stationName_Zh_tw + "<br>";
- 						contentString += "剩餘車位：" + res.data.availableRentBikes + "<br>";
- 						contentString += "可還車位：" + res.data.availableReturnBikes  + "<br>";
+ 						contentString += "可借車輛數：" + res.data.availableRentBikes + "<br>";
+ 						contentString += "可還車位數：" + res.data.availableReturnBikes  + "<br>";
  						contentString += "資料來源更新時間：" + res.data.srcUpdateTime  + "<br>";
 
 						var infowindow = new google.maps.InfoWindow({
@@ -68,6 +68,14 @@
 						imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
 					}
 			);
+
+
+			var input = document.getElementById('searchBox');
+			var searchBox = new google.maps.places.SearchBox(input);
+			$("#search").on('click', function(){
+				var places = searchBox.getPlaces();
+				console.log(places);
+			});
 		});
 	}
 
