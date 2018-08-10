@@ -13,8 +13,9 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<div class="form-inline my-2 my-lg-0">
 				<input id="searchBox" class="form-control mr-sm-2"
-					placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" id="search">Search</button>
+					placeholder="輸入你的想搜尋的地點" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" id="search">搜尋</button>
+				<button class="btn btn-outline-default my-2 my-sm-0" id="reset">清除</button>
 			</div>
 		</div>
 	</nav>

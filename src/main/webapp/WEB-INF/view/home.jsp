@@ -10,6 +10,13 @@ pageEncoding="UTF-8"%>
 	src="https://maps.googleapis.com/maps/api/js?key=${googleMapApiKey}&libraries=places&callback=initMap">
 </script>
 <script type="text/javascript">
+
+	$(document).ready(function(){
+		$("#reset").on('click',function(){
+			$("#searchBox").val("");
+		});
+	});
+
 	var map;
 	var userPosition;
 	function initMap() {
