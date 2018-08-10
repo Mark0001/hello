@@ -40,33 +40,21 @@ public class UbikeStationCacheFactory {
     private List<UbikeStationInfoDTO> getAllStationInfo() {
 
         List<UbikeStationInfoDTO> dataAll = new ArrayList<UbikeStationInfoDTO>();
-        // Taipei
-        List<UbikeStationInfoDTO> dataTaipei = cityStationData("Taipei");
-        dataAll.addAll(dataTaipei);
-        // NewTaipei
-        List<UbikeStationInfoDTO> dataNewTaipei = cityStationData("NewTaipei");
-        dataAll.addAll(dataNewTaipei);
 
-        // Taoyuan
-        List<UbikeStationInfoDTO> dataTaoyuan = cityStationData("Taoyuan");
-        dataAll.addAll(dataTaoyuan);
-        // Taichung
-        List<UbikeStationInfoDTO> dataTaichung = cityStationData("Taichung");
-        dataAll.addAll(dataTaichung);
-        // Tainan
-        List<UbikeStationInfoDTO> dataTainan = cityStationData("Tainan");
-        dataAll.addAll(dataTainan);
-        // Kaohsiung
-        List<UbikeStationInfoDTO> dataKaohsiung = cityStationData("Kaohsiung");
-        dataAll.addAll(dataKaohsiung);
-        // ChanghuaCounty
-        List<UbikeStationInfoDTO> dataChanghuaCounty = cityStationData("ChanghuaCounty");
-        dataAll.addAll(dataChanghuaCounty);
-        // PingtungCounty
-        List<UbikeStationInfoDTO> dataPingtungCounty = cityStationData("PingtungCounty");
-        dataAll.addAll(dataPingtungCounty);
+        String[] citys = { "Taipei", "NewTaipei", "Taoyuan", "Taichung", "Tainan", "Kaohsiung", "ChanghuaCounty",
+                "PingtungCounty" };
+        for (String city : citys) {
+            this.addIntoDataAll(city, dataAll);
+        }
 
         return dataAll;
+    }
+
+    private void addIntoDataAll(String city, List<UbikeStationInfoDTO> dataAll) {
+        List<UbikeStationInfoDTO> data = cityStationData(city);
+        if (data != null) {
+            dataAll.addAll(data);
+        }
     }
 
     private List<UbikeStationInfoDTO> cityStationData(String city) {
@@ -75,8 +63,10 @@ public class UbikeStationCacheFactory {
             jsonArray = readJsonFromUrl("http://ptx.transportdata.tw/MOTC/v2/Bike/Station/" + city + "?$format=JSON");
         } catch (JSONException e) {
             e.printStackTrace();
+            return null;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
 
         List<UbikeStationInfoDTO> data = new ArrayList<UbikeStationInfoDTO>();
