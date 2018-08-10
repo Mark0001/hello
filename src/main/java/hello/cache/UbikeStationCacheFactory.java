@@ -24,8 +24,8 @@ public class UbikeStationCacheFactory {
     @Autowired
     EhcacheUtil cacheUtil;
 
-    public <T> T getFromCache() {
-        T t = cacheUtil.getElement(EhcacheUtil.CacheGroup.cache120Sec, "stationData");
+    public <T> List<UbikeStationInfoDTO> getFromCache() {
+        List<UbikeStationInfoDTO> t = cacheUtil.getElement(EhcacheUtil.CacheGroup.cache120Sec, "stationData");
         if (t != null) {
             System.out.println("get From cache");
             return t;
@@ -33,7 +33,7 @@ public class UbikeStationCacheFactory {
             System.out.println("not get From cache");
             List<UbikeStationInfoDTO> value = this.getAllStationInfo();
             cacheUtil.addElement(EhcacheUtil.CacheGroup.cache120Sec, "stationData", value);
-            return (T) value;
+            return value;
         }
     }
 
